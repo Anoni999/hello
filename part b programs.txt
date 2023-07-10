@@ -1,0 +1,394 @@
+Program 1: Validate register Number
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>University Registration Number Validation</title>
+  <script>
+    function validateForm() {
+      var registrationNumber = document.getElementById("registrationNumber").value;
+      var isValid = /^[A-Za-z]{2}\d{6}$/.test(registrationNumber);
+
+      if (isValid) {
+        alert("Registration number is valid.");
+      } else {
+        alert("Invalid registration number. Please enter a valid registration number.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>University Registration Number Validation</h1>
+  <form>
+    <label for="registrationNumber">Registration Number:</label>
+    <input type="text" id="registrationNumber" name="registrationNumber" required>
+    <button type="button" onclick="validateForm()">Validate</button>
+  </form>
+</body>
+</html>
+
+*Give Input: BC201501
+
+
+
+Program 2: Login Credentials with alert:
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <script>
+    function validateLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "password") {
+        alert("Login Successful");
+      } else {
+        alert("Login Unsuccessful");
+      }
+
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <h1>Login Page</h1>
+  <form onsubmit="return validateLogin();">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br>
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>
+
+*Input:
+Username: admin
+Password: password
+
+Program 3: Develop and demonstrate a HTML page containing JavaScript function tochange the font style of a paragraph on mouse over and on mouse out events.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Change Font Style on Mouse Events</title>
+  <style>
+    #my-paragraph {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    function changeFontStyle() {
+      this.style.fontFamily = "Verdana, sans-serif";
+      this.style.fontSize = "20px";
+    }
+
+    function resetFontStyle() {
+      this.style.fontFamily = "Arial, sans-serif";
+      this.style.fontSize = "16px";
+    }
+  </script>
+</head>
+<body>
+  <p id="my-paragraph" onmouseover="changeFontStyle.call(this)" onmouseout="resetFontStyle.call(this)">Hello World</p>
+</body>
+</html>
+
+*point cursor to the text(hello world) and see the magic
+
+
+Program 4: Write a PHP Program to Accept the number and Compute sum of its Digits until
+the result digit becomes a single Digit.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of Digits</title>
+</head>
+<body>
+  <h1>Sum of Digits</h1>
+
+  <form method="POST" action="">
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" name="number" required>
+    <button type="submit">Compute</button>
+  </form>
+
+  <?php
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $number = $_POST["number"];
+
+    // Function to compute the sum of digits until a single digit is obtained
+    function computeSumOfDigits($num) {
+      while ($num > 9) {
+        $num = array_sum(str_split($num));
+      }
+
+      return $num;
+    }
+
+    // Compute the sum of digits and display the result
+    $result = computeSumOfDigits($number);
+    echo "<p>The sum of digits is: $result</p>";
+  }
+  ?>
+
+</body>
+</html>
+
+*Save this file in your Cdrive/xampp/htdocs as hello.php
+	Open Xampp control panel> turn on mysql and apache.
+run this code on your browser, url: localhost/hello.php
+
+Program 5:Write a PHP Program to store Student records into a database and display all
+the records.
+
+1.run.php
+
+<html lang="en">
+    <head>
+        <title> GFG- Store Data </title>
+</head>
+<body>
+    <center>
+        <h1>Storing Database</h1>
+        <form action="sqlfile.php" method="post">
+<p>
+        <label for="registernumber">Register Number:</label>
+        <input type="text" name="registernumber" id="registernumber">
+</p>
+<p>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+</p>
+<p>
+        <label for="class">Class:</label>
+        <input type="text" name="class" id="class">
+</p>
+<p>
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender" id="gender">
+</p>
+<p>
+        <label for="phonenumber">Phone Number:</label>
+        <input type="text" name="phonenumber" id="phonenumber">
+</p>
+<p>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+</p>
+<p>
+        <label for="adress">Address:</label>
+        <input type="text" name="address" id="address">
+</p>
+<input type="submit" value="Submit">
+</form>
+</center>
+</body>
+</html>
+
+2.sqlfile.php
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert Page page</title>
+</head>
+<body>
+<center>
+<?php
+// servername => localhost
+// username => root
+// password => empty
+//database name => final
+$conn = mysqli_connect( "localhost", "root", "", "final1");
+// Check connection
+if($conn === false){
+die("ERROR: Could not connect. "
+.mysqli_connect_error());
+}
+// Taking all 5 values from the form data(input)
+$registernumber= $_REQUEST['registernumber'];
+$name= $_REQUEST['name'];
+$class= $_REQUEST['class'];
+$gender= $_REQUEST['gender'];
+$phonenumber= $_REQUEST['phonenumber'];
+$email= $_REQUEST['email'];
+$address= $_REQUEST['address'];
+
+
+$sql = "INSERT INTO reg VALUES ('$registernumber', '$name','$class','$gender','$phonenumber','$email','$address')";
+    if(mysqli_query($conn, $sql)){
+    echo "<h3>data stored in a database Sucessfully."
+    ."Please browse your localhost Php my admin"
+    ."to view the updated data</h3>";
+    echo nl2br("\n$registernumber\n $name\n $class\n $gender\n $class\n $phonenumber\n $email\n $address\n");
+    }else{
+    echo "ERROR: Hush! Sorry $sql."
+   . mysqli_error($conn);
+    }
+    // Close connection
+    mysqli_close($conn);
+    ?>
+    </center>
+</body>
+</html>
+
+Program 6:Write a PHP Program to Search Student information based on Register
+_Number and display it in a Table.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Search</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Information Search</h2>
+    <form method="POST">
+        <label for="register_number">Enter Register Number:</label>
+        <input type="text" id="register_number" name="register_number">
+        <button type="submit" name="search">Search</button>
+    </form>
+
+    <?php
+    // Sample student data
+    $studentData = [
+        ["register_number" => "101", "name" => "John Doe", "age" => 20, "grade" => "A"],
+        ["register_number" => "102", "name" => "Jane Smith", "age" => 19, "grade" => "B"],
+        ["register_number" => "103", "name" => "Mark Johnson", "age" => 21, "grade" => "A"],
+        // Add more student data as needed
+    ];
+
+    // Function to search for student information based on register number
+    function searchStudent($registerNumber, $studentData) {
+        foreach ($studentData as $student) {
+            if ($student['register_number'] === $registerNumber) {
+                return $student;
+            }
+        }
+        return null;
+    }
+
+    // Handle form submission
+    if (isset($_POST['search'])) {
+        $registerNumber = $_POST['register_number'];
+
+        $student = searchStudent($registerNumber, $studentData);
+
+        if ($student) {
+            echo "<h3>Student Information</h3>";
+            echo "<table>";
+            echo "<tr><th>Register Number</th><th>Name</th><th>Age</th><th>Grade</th></tr>";
+            echo "<tr>";
+            echo "<td>{$student['register_number']}</td>";
+            echo "<td>{$student['name']}</td>";
+            echo "<td>{$student['age']}</td>";
+            echo "<td>{$student['grade']}</td>";
+            echo "</tr>";
+            echo "</table>";
+        } else {
+            echo "<p>No student found with the given register number.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+*Save this file in your Cdrive/xampp/htdocs as hello.php
+	Open Xampp control panel> turn on mysql and apache.
+run this code on your browser, url: localhost/hello.php
+
+Program 7: Write a PHP Program to Search Student information based on
+Register_Number and update the Address of that Student.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Search and Update</title>
+</head>
+<body>
+    <h2>Student Information Search and Update</h2>
+    <form method="POST">
+        <label for="register_number">Enter Register Number:</label>
+        <input type="text" id="register_number" name="register_number">
+        <button type="submit" name="search">Search</button>
+    </form>
+
+    <?php
+    // Sample student data
+    $studentData = [
+        ["register_number" => "101", "name" => "John Doe", "age" => 20, "grade" => "A", "address" => "123 Main St"],
+        ["register_number" => "102", "name" => "Jane Smith", "age" => 19, "grade" => "B", "address" => "456 Elm St"],
+        ["register_number" => "103", "name" => "Mark Johnson", "age" => 21, "grade" => "A", "address" => "789 Oak St"],
+        // Add more student data as needed
+    ];
+
+    // Function to search for student information based on register number
+    function searchStudent($registerNumber, $studentData) {
+        foreach ($studentData as $key => $student) {
+            if ($student['register_number'] === $registerNumber) {
+                return $key;
+            }
+        }
+        return null;
+    }
+
+    // Handle form submission
+    if (isset($_POST['search'])) {
+        $registerNumber = $_POST['register_number'];
+
+        $studentIndex = searchStudent($registerNumber, $studentData);
+
+        if ($studentIndex !== null) {
+            $student = $studentData[$studentIndex];
+
+            echo "<h3>Student Information</h3>";
+            echo "<p>Register Number: {$student['register_number']}</p>";
+            echo "<p>Name: {$student['name']}</p>";
+            echo "<p>Age: {$student['age']}</p>";
+            echo "<p>Grade: {$student['grade']}</p>";
+            echo "<p>Address: {$student['address']}</p>";
+
+            echo "<h3>Update Address</h3>";
+            echo "<form method='POST'>";
+            echo "<input type='hidden' name='student_index' value='$studentIndex'>";
+            echo "<label for='address'>New Address:</label>";
+            echo "<input type='text' id='address' name='address'>";
+            echo "<button type='submit' name='update'>Update</button>";
+            echo "</form>";
+        } else {
+            echo "<p>No student found with the given register number.</p>";
+        }
+    }
+
+    // Handle address update
+    if (isset($_POST['update'])) {
+        $studentIndex = $_POST['student_index'];
+        $newAddress = $_POST['address'];
+
+        if ($studentIndex !== null) {
+            $studentData[$studentIndex]['address'] = $newAddress;
+            echo "<p>Address updated successfully.</p>";
+        } else {
+            echo "<p>Failed to update address.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+*Save this file in your Cdrive/xampp/htdocs as hello.php
+	Open Xampp control panel> turn on mysql and apache.
+run this code on your browser, url: localhost/hello.php

@@ -1,0 +1,260 @@
+
+Program 2:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College Timetable</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>College Timetable</h2>
+  <table>
+    <tr>
+      <th>Day</th>
+      <th>9:30am-11:00am</th>
+      <th>11:30am-01:00pm</th>
+      <th>02:00pm-3:30pm</th>
+    </tr>
+    <tr>
+      <td>Monday</td>
+      <td>.NET</td>
+      <td>Web Technology</td>
+      <td>Android Programming</td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>.NET</td>
+      <td>Web Technology</td>
+      <td>Android Programming</td>
+    </tr>
+    <tr>
+      <td>Wednesday</td>
+      <td>.NET</td>
+      <td>Web Technology</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <td>Thursday</td>
+      <td>.NET</td>
+      <td>Web Technology</td>
+      <td>Python</td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+Program 4:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Application Form</title>
+</head>
+<body>
+    <h1>Student Application Form</h1>
+    <form>
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Father's Name:</label>
+        <input type="text" name="fatherName" required><br><br>
+
+        <label>Mother's Name:</label>
+        <input type="text" name="motherName" required><br><br>
+
+        <label>Address:</label>
+        <textarea name="address" rows="3" required></textarea><br><br>
+
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required><br><br>
+
+        <label>Gender:</label>
+        <input type="text" name="gender" required><br><br>
+
+        <label>Caste:</label>
+        <input type="text" name="caste" required><br><br>
+
+        <label>Contact Number:</label>
+        <input type="tel" name="contact" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+Program 5:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Style Specification Example</title>
+    <!-- External Level Style Specification -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Document Level Style Specification -->
+    <style>
+        h1 {
+            color: blue;
+            font-size: 24px;
+        }
+        p {
+            color: green;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>This is a Heading</h1>
+    <p>This is a paragraph.</p>
+    <!-- Inline Level CSS Style Specification -->
+    <h2 style="color: red; font-size: 18px;">Another Heading</h2>
+    <p style="color: orange; font-size: 14px;">Another paragraph.</p>
+</body>
+</html>
+
+Program 6:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Factorial Calculator</title>
+    <script>
+      function calculateFactorial() {
+        var number = parseInt(prompt("Enter a number:"));
+        var factorial = 1;
+        
+        for (var i = 1; i <= number; i++)
+          factorial *= i;
+        
+        alert("Factorial: " + factorial);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+  </body>
+</html>
+
+Program 7:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Clock</title>
+    <style>
+      #clock {
+        font-size: 48px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <script>
+      setInterval(function() {
+        var date = new Date();
+        var time = date.toLocaleTimeString();
+        document.getElementById("clock").innerHTML = time;
+      }, 1000);
+    </script>
+  </body>
+</html>
+
+Program 8:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .calculator {
+      display: inline-block;
+      border: 1px solid #333;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+    }
+
+    .button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Calculator</h1>
+  <div class="calculator">
+    <input type="text" id="expression" readonly><br>
+
+    <table>
+      <tr>
+        <td><button class="button" onclick="appendToExpression('7')">7</button></td>
+        <td><button class="button" onclick="appendToExpression('8')">8</button></td>
+        <td><button class="button" onclick="appendToExpression('9')">9</button></td>
+        <td><button class="button" onclick="appendToExpression('/')">/</button></td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="appendToExpression('4')">4</button></td>
+        <td><button class="button" onclick="appendToExpression('5')">5</button></td>
+        <td><button class="button" onclick="appendToExpression('6')">6</button></td>
+        <td><button class="button" onclick="appendToExpression('*')">*</button></td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="appendToExpression('1')">1</button></td>
+        <td><button class="button" onclick="appendToExpression('2')">2</button></td>
+        <td><button class="button" onclick="appendToExpression('3')">3</button></td>
+        <td><button class="button" onclick="appendToExpression('-')">-</button></td>
+      </tr>
+      <tr>
+        <td><button class="button" onclick="appendToExpression('0')">0</button></td>
+        <td><button class="button" onclick="appendToExpression('.')">.</button></td>
+        <td><button class="button" onclick="calculateExpression()">=</button></td>
+        <td><button class="button" onclick="appendToExpression('+')">+</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function appendToExpression(value) {
+      document.getElementById("expression").value += value;
+    }
+
+    function calculateExpression() {
+      var expression = document.getElementById("expression").value;
+      var result = eval(expression);
+      document.getElementById("expression").value = result;
+    }
+  </script>
+</body>
+</html>
